@@ -8,16 +8,16 @@ async function initMap() {
   // Request needed libraries.
   const { Map } = await google.maps.importLibrary("maps") as google.maps.MapsLibrary;
 
-  const myLatlng = { lat: -25.363, lng: 131.044 };
+  const myLatlng = { lat: 56.48413745892002, lng: -3.01848828792572 };
 
   const map = new google.maps.Map(document.getElementById("map")!, {
-    zoom: 4,
+    zoom: 18,
     center: myLatlng,
   });
 
   // Create the initial InfoWindow.
   let infoWindow = new google.maps.InfoWindow({
-    content: "Click the map to get Lat/Lng!",
+    content: "You are here",
     position: myLatlng,
   });
 
@@ -35,6 +35,7 @@ async function initMap() {
     infoWindow.setContent(
       JSON.stringify(mapsMouseEvent.latLng.toJSON(), null, 2)
     );
+    console.log(mapsMouseEvent.latLng.toJSON())
     infoWindow.open(map);
   });
 }
